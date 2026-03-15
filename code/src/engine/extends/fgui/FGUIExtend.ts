@@ -49,21 +49,16 @@ export class FGUIExtend implements IEngineExtend<fgui.GObject>{
 
     private getFguiClassName(owner:any){
         let clsName:string;
-        // if(obj.constructor && obj.constructor.name)clsName = obj.constructor.name;//common
-        // if(clsName.indexOf("fgui")!=-1)return clsName;
-        if(owner.constructor && owner.constructor.name)clsName = owner.constructor.name;//common
-        if(clsName && clsName.length>2)return clsName;//猜测类名长度小于等于2的可能是压缩后的代码
+        if(owner.constructor && owner.constructor.name)clsName = owner.constructor.name;
+        if(clsName && clsName.length>2)return clsName;
         if(owner[ConstVars.GAMEINSPECT_CLASS_KEY])return owner[ConstVars.GAMEINSPECT_CLASS_KEY];
-        if(owner["__class__"])return owner.__class__;//egret
-        if(owner.__classname__)return owner.__classname__;//Cocos create
-        if(owner._className)return owner._className;//Cocos2d-JS
         return clsName || typeof owner;
     }
 
-    getNotShowPropNames(obj: egret.DisplayObject): string[] {
+    getNotShowPropNames(obj: any): string[] {
         let s = this;
         let fguiObj = s.getExtendNode(obj);
-        if((fguiObj && !fguiObj.packageItem) || (obj && obj["_relations"]/**先通过这个判断是不是fgui的吧 */ && !obj["packageItem"])){
+        if((fguiObj && !fguiObj.packageItem) || (obj && obj["_relations"] && !obj["packageItem"])){
             return ["baseUserData"];
         }
         if(s.engine.getNotShowPropNames){
