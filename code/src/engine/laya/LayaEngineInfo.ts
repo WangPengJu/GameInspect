@@ -1,7 +1,6 @@
-import { ConstVars } from "../../common/ConstVars";
+import { IEngineInfo } from "../../common/IEngineInfo";
 import { PropNode } from "../../common/TreeNode";
 import { Utils } from "../../common/Utils";
-import { IEngineInfo } from "../../common/IEngineInfo";
 import { LayaMouseEvent } from "./LayaMouseEvent";
 import { LayaStageRectMask } from "./LayaStageRectMask";
 
@@ -138,20 +137,20 @@ export class LayaEngineInfo   implements IEngineInfo<Laya.Node>{
         return result;
     }
     
-    getClassName(obj: Laya.Node): string {
-        if(typeof obj == "number" || typeof obj == "string")return obj;
-        let s = this;
-        let name = Utils.getClassName(obj);
-        let components = obj["_components"]
-        if(components && components.length>0){
-            let compNames = [];
-            for(let i=0; i<components.length; i++){
-                let comp = components[i];
-                compNames.push(Utils.getClassName(comp))
-            }
-            name += ConstVars.SPECIAL_NAME_START+compNames.join(",")+ConstVars.SPECIAL_NAME_END;
-        }
-        return name;
-    }
+    // getClassName(obj: Laya.Node): string {
+    //     if(typeof obj == "number" || typeof obj == "string")return obj;
+    //     let s = this;
+    //     let name = Utils.getClassName(obj);
+    //     let components = obj["_components"]
+    //     if(components && components.length>0){
+    //         let compNames = [];
+    //         for(let i=0; i<components.length; i++){
+    //             let comp = components[i];
+    //             compNames.push(Utils.getClassName(comp))
+    //         }
+    //         name += ConstVars.SPECIAL_NAME_START+compNames.join(",")+ConstVars.SPECIAL_NAME_END;
+    //     }
+    //     return name;
+    // }
 
 }

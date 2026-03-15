@@ -1,14 +1,14 @@
-import { PropNode, TreeNode } from "../common/TreeNode";
-import { CocosCreatorEngineInfo } from "./cocoscreator/CocosCreatorEngineInfo";
-import { Cocos2dxEngineInfo } from "./cocos2dx/Cocos2dxEngineInfo";
-import { EgretEngineInfo } from "./egret/EgretEnginInfo";
-import { IEngineInfo } from "../common/IEngineInfo";
-import { LayaEngineInfo } from "./laya/LayaEngineInfo";
-import { Utils } from "../common/Utils";
-import { PIXIEngineInfo } from "./pixi/PIXIEngineInfo";
 import { ConstVars } from "../common/ConstVars";
-import { ThreeJSEngineInfo } from "./threejs/ThreeJSEngineInfo";
+import { IEngineInfo } from "../common/IEngineInfo";
+import { PropNode, TreeNode } from "../common/TreeNode";
+import { Utils } from "../common/Utils";
+import { Cocos2dxEngineInfo } from "./cocos2dx/Cocos2dxEngineInfo";
+import { CocosCreatorEngineInfo } from "./cocoscreator/CocosCreatorEngineInfo";
+import { EgretEngineInfo } from "./egret/EgretEnginInfo";
 import { ExtendManager } from "./extends/ExtendManager";
+import { LayaEngineInfo } from "./laya/LayaEngineInfo";
+import { PIXIEngineInfo } from "./pixi/PIXIEngineInfo";
+import { ThreeJSEngineInfo } from "./threejs/ThreeJSEngineInfo";
 
 export class EngineManager{
 
@@ -58,7 +58,8 @@ export class EngineManager{
         let s = this;
         let treeNode = new TreeNode();
         treeNode.name = engineInfo.getClassName(obj);
-        treeNode.memberName = engineInfo.getObjName(obj);
+        // 设置成员名称显示颜色与右侧属性面板一致（浅灰色）
+        treeNode.memberName = `<font color='#ff9ec4'>${engineInfo.getObjName(obj)}</font>`;
         treeNode.visible = engineInfo.getVisible(obj);
         treeNode.uid = obj.devUUID;
         let children = engineInfo.getChildren(obj)

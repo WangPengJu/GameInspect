@@ -1,11 +1,9 @@
-import { event } from "jquery";
+import { ConstVars } from "../../common/ConstVars";
 import { IEngineInfo } from "../../common/IEngineInfo";
 import { MessageType } from "../../common/Message";
-import { PropNode } from "../../common/TreeNode";
 import { Utils } from "../../common/Utils";
 import { ThreeJSRectMask } from "./ThreeJSRectMask";
-import * as Stats from "./ThreeJSStats"
-import { ConstVars } from "../../common/ConstVars";
+import * as Stats from "./ThreeJSStats";
 /////////////////////__THREE_DEVTOOLS__ 初始化START/////////////////////
 declare global {
     interface Window {
